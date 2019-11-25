@@ -47,8 +47,7 @@ public class App {
 				String str = scn.next();
 				System.out.println("sending the message");
 			}else if(s3==3){
-				AppDAO app = AppManager.getAppDAO();
-				app.mainmanu();
+				System.out.println("go back to main menu");
 			}
 			break;
 		case 3:

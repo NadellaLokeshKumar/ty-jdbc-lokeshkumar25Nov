@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ty.appdevelopment.app.App;
+import com.mysql.jdbc.Connection;
 import com.ty.appdevelopment.dto.AppBean;
 
 public class AppDAOImpl implements AppDAO {
@@ -203,12 +203,6 @@ public class AppDAOImpl implements AppDAO {
 					e.printStackTrace();
 				}
 			}
-			
-		}
-		@Override
-		public void mainmanu() {
-	     App a=new App();
-	     a.main(null);
 			
 		}
 		}

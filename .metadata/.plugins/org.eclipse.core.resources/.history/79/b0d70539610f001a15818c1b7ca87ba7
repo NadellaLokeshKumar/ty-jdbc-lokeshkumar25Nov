@@ -11,5 +11,4 @@ public interface AppDAO {
 	public int add(AppBean bean);
 	public int delete(String name);
 	public int update(AppBean bean);
-	public void mainmanu();
 }

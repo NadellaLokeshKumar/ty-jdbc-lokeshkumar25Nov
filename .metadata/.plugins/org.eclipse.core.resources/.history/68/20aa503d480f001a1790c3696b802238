@@ -1,0 +1,10 @@
+package com.ty.appdevelopment.app;
+
+public class App {
+
+	public static void main(String[] args) {
+		System.out.println("press 1 to get all the contact names");
+		System.out.println("press 2 to get the search contact");
+		System.out.println("press 3 to operate the contact");
+	}
+}

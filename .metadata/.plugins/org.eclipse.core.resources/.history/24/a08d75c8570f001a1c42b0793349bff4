@@ -1,0 +1,79 @@
+package com.ty.appdevelopment.app;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.ty.appdevelopment.dao.AppDAO;
+import com.ty.appdevelopment.dto.AppBean;
+import com.ty.appdevelopment.util.AppManager;
+
+public class App {
+
+	public static void main(String[] args) {
+		System.out.println("press 1 to get all the contact names");
+		System.out.println("press 2 to get the search contact");
+		System.out.println("press 3 to operate the contact");
+		Scanner scn = new Scanner(System.in);
+		int ch = scn.nextInt();
+		switch(ch) {
+		
+		case 1:
+			AppDAO dao = AppManager.getAppDAO();
+			List<AppBean> result = dao.getAllContactData();
+			
+			for(AppBean b : result) {
+				System.out.println("Name :"+b.getName());
+			}
+			break;
+		case 2:
+			AppDAO dao2 = AppManager.getAppDAO();
+			 System.out.println("enter the name");
+			 String s2 = scn.next();
+			
+			AppBean bean2 = dao2.searchContact(s2);
+			System.out.println(bean2.getName());
+			System.out.println(bean2.getNumber());
+			System.out.println(bean2.getGroupName());
+			
+			System.out.println("press 1 to call");
+			System.out.println("press2 to message");
+			System.out.println("press 3 to go bact to main menu");
+			System.out.println("enter one value");
+			int s3 = scn.nextInt();
+			if(s3==1) {
+				System.out.println("calling the contact          "+"end call");
+			}else if(s3==2) {
+				System.out.println("type the message");
+				String str = scn.next();
+				System.out.println("sending the message");
+			}else if(s3==3){
+				System.out.println("go back to main menu");
+			}
+			break;
+		case 3:
+			
+			
+			System.out.println("press 1 to add contact");
+			System.out.println("press 2 to delete contact");
+			System.out.println("press 3 to edit contact");
+			int s4 = scn.nextInt();
+			if(s4==1) {
+				AppDAO dao3 = AppManager.getAppDAO();
+				AppBean bean3 = new AppBean();
+				String name = scn.next();
+				bean3.setName(name);
+				int number = scn.nextInt();
+				bean3.setNumber(number);
+				String groupname = scn.next();
+				bean3.setGroupName(groupname);
+				
+				
+				int count1 = dao3.add(bean3);
+				System.out.println("count1 rows are inserted");
+			}
+		}
+		
+	}
+
+	
+}

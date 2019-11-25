@@ -1,0 +1,10 @@
+package com.ty.appdevelopment.util;
+
+public class AppManager {
+
+	private AppManager() {}
+	
+	public static AppDAO getAppDAO() {
+		return new AppDaoImpl();
+	}
+}

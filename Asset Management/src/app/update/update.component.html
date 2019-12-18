@@ -1,0 +1,44 @@
+<form class="col-md-4 offset-4 mt-5 mb-5 bg-light card card-body" #form="ngForm" (ngSubmit)="submitData(form)">
+    <h1 class="bg-dark text-light text-center ">Update Apparment Details</h1>
+    <div class="form-group">
+        <input class="form-control" type="number" name="requestNo" id="requestNo" placeholder="Enter Request Id"
+            #requestNo="ngModel" ngModel required>
+    </div>
+    <div *ngIf="requestNo.touched && requestNo.invalid">
+        <p class="alert alert-danger" *ngIf="requestNo.errors.required">This field is required</p>
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="number" name="appNO" id="appNO" placeholder="Enter Appartment Id"
+            #appNO="ngModel" ngModel required>
+    </div>
+    <div *ngIf="appNO.touched && appNO.invalid">
+        <p class="alert alert-danger" *ngIf="appNO.errors.required">This field is required</p>
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="text" name="appartName" id="appartName" placeholder="Enter Appartment Name"
+            #appartName="ngModel" ngModel required>
+    </div>
+    <div *ngIf="appartName.touched && appartName.invalid">
+        <p class="alert alert-danger" *ngIf="appartName.errors.required">This field is required</p>
+
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" type="text" name="appartArea" id="appartArea" placeholder="Enter Appartment area"
+            #appartArea="ngModel" ngModel required>
+    </div>
+    <div *ngIf="appartArea.touched && appartArea.invalid">
+        <p class="alert alert-danger" *ngIf="appartArea.errors.required">This field is required</p>
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="number" name="cost" id="cost" placeholder="Enter cost of appartment"
+            #cost="ngModel" ngModel required>
+    </div>
+    <div *ngIf="cost.touched && cost.invalid">
+        <p class="alert alert-danger" *ngIf="cost.errors.required">This field is required</p>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary float-right" [disabled]="form.invalid">Add Appartment</button>
+    </div>
+</form>

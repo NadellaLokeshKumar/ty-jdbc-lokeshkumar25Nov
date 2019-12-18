@@ -1,0 +1,21 @@
+ <table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Number</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let can of list">
+            <td>{{can.id}}</td>
+            <td>{{can.name}}</td>
+            <td>{{can.email}}</td>
+            <td>{{can.number}}</td>
+            <td>{{can.role}}</td>
+        </tr>
+        
+    </tbody>
+</table> 

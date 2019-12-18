@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Appartment Id</th>
+            <th>Appartment Area</th>
+            <th>Flat Id</th>
+            <th>Flat Type</th>
+            <th>Cost</th>
+            <th *ngIf="role=='user'">Booking</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let app of list">
+        <tr *ngFor="let flat of app.flats">
+            <td>{{app.appartmentId}}</td>
+            <td>{{app.appartmentArea}}</td>
+            <td>{{flat.flatId}}</td>
+            <td>{{flat.flatType}}</td>
+            <td>{{flat.cost}}</td>
+            <td *ngIf="role=='user'"><button type="button" (click)='bookhere(flat)'>Book Here</button></td>
+        </tr>
+    </tbody>
+</table>

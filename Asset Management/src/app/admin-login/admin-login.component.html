@@ -1,0 +1,24 @@
+<p class="alert alert-danger" *ngIf=error>{{error}}</p>
+<form class="col-md-4 offset-4 mt-5 mb-5 bg-light card card-body" #form="ngForm" (ngSubmit)="submitform(form)">
+    <h1 class="bg-dark text-light text-center ">Login Page</h1>
+    <div class="form-group">
+        <input class="form-control" type="email" name="email" id="email" placeholder="Enter email" #email="ngModel"
+            ngModel required email>
+    </div>
+    <div *ngIf="email.touched && email.invalid">
+        <p class="text-danger" *ngIf="email.errors.required">*This field is required</p>
+        <p class="text-danger" *ngIf="email.errors.email">*must follow email pattern</p>
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" type="password" name="password" id="password" placeholder="Enter password"
+            #password="ngModel" ngModel required minlength="8">
+    </div>
+    <div *ngIf="password.touched && password.invalid">
+        <p class="text-danger" *ngIf="password.errors.required">*This field is required</p>
+        <p class="text-danger" *ngIf="password.errors.minlength">*minimum 8 letters required</p>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success float-right" [disabled]="form.invalid">Login</button>
+    </div>
+</form>

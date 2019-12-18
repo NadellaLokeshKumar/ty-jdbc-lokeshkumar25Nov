@@ -1,0 +1,15 @@
+<div class="alert alert-succes" *ngIf="error">{{error}}</div>
+<form class="col-md-4 offset-4 mt-5 mb-5 bg-light card card-body" #form="ngForm" (ngSubmit)="submitData(form)">
+    <h1 class="bg-dark text-light text-center ">Remove Asset</h1>
+    <div class="form-group">
+        <input class="form-control" type="number" name="requestNo" id="requestNo" placeholder="Enter Asset id" #requestNo="ngModel" ngModel
+            required>
+    </div>
+    <div *ngIf="requestNo.touched && requestNo.invalid">
+        <p class="alert alert-danger" *ngIf="requestNo.errors.required">This field is required</p>
+    </div>
+    <div>
+        <button type="reset" class="btn btn-warning float-left" [disabled]="form.invalid">Reset</button>
+        <button type="submit" class="btn btn-info float-right" [disabled]="form.invalid">Delete</button>
+    </div>
+</form>

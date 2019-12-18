@@ -1,0 +1,22 @@
+<table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Appartment Id</th>
+                <th>Appartment Area</th>
+                <th>Appartment Name</th>
+                <th>Flat Id</th>
+                <th>Flat Type</th>
+                <th>Cost</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let app of list">
+            <tr *ngFor="let flat of app.flats">
+                <td>{{app.appartmentId}}</td>
+                <td>{{app.appartmentArea}}</td>
+                <td>{{app.appartmentName}}</td>
+                <td>{{flat.flatId}}</td>
+                <td>{{flat.flatType}}</td>
+                <td>{{flat.cost}}</td>
+            </tr>
+        </tbody>
+    </table>

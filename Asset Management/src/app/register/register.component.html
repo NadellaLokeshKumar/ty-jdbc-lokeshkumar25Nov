@@ -1,0 +1,59 @@
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>
+
+<div class="col-md-4 offset-md-4 mt-5">
+    <form #form="ngForm" (ngSubmit)="submitData(form)">
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <h5>Registration</h5>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Enter Name"
+                        #name="ngModel" ngModel required pattern="^[A-Z]+[a-zA-Z]*$">
+                </div>
+                <div *ngIf="name.touched && name.invalid">
+                    <p class="text-danger" *ngIf="name.errors.required" style="font-size: smaller">*This field is required</p>
+                    <p class="text-danger" *ngIf="name.errors.pattern" style="font-size: smaller">*Only characters & first letter is capital</p>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" id="email" placeholder="Enter email"
+                        #email="ngModel" ngModel required email>
+                </div>
+                <div *ngIf="email.touched && email.invalid">
+                    <p class="text-danger" *ngIf="email.errors.required" style="font-size: smaller">*This field is required</p>
+                    <p class="text-danger" *ngIf="email.errors.email" style="font-size: smaller">*must follow email patteren</p>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" id="password"
+                        placeholder="Enter password" #password="ngModel" ngModel required minlength="8">
+                </div>
+                <div *ngIf="password.touched && password.invalid">
+                    <p class="text-danger" *ngIf="password.errors.required" style="font-size: smaller">*This field is required</p>
+                    <p class="text-danger" *ngIf="password.errors.minlength" style="font-size: smaller">*minimum 8 characters</p>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="number" id="number" placeholder="Enter mobile number"
+                        #number="ngModel" ngModel required pattern="[0-9]{10}">
+                </div>
+                <div *ngIf="number.touched && number.invalid">
+                    <p class="text-danger" *ngIf="number.errors.required" style="font-size: smaller">*This field is required</p>
+                    <p class="text-danger" *ngIf='number.errors.pattern' style="font-size: smaller">*Only 10 digit numbers are allowed</p>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="role" id="role" placeholder="Enter role"
+                        #role="ngModel" ngModel required pattern="[A-Za-z]{15}">
+                        
+                </div>
+                <div *ngIf="role.touched && role.invalid">
+                    <p class="text-danger" *ngIf="role.errors.required" style="font-size: smaller">*This field is required</p>
+                    <p class="text-danger" *ngIf="name.errors.pattern" style="font-size: smaller">*Only characters</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-outline-dark float-right" [disabled]="form.invalid">Register</button>
+            </div>
+        </div>
+    </form>
+</div>

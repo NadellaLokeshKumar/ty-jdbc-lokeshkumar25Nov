@@ -1,0 +1,35 @@
+<div class="alert alert-success" *ngIf='error'>{{error}}</div>
+<div class="col-md-4 offset-4 mt-5">
+    <form [formGroup]='addAppartmentForm' (ngSubmit)="addAppartmentData()">
+        <div class="card">
+            <div class="card-header bg-dark text-light">
+                <h3>Add Appartment</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <input type="text" name="appartmentArea" id="appartmentArea" class="form-control"
+                        placeholder="Enter Appartment Area" formControlName="appartmentArea">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="appartmentName" id="appartmentName" class="form-control"
+                        placeholder="Enter Appartment Name" formControlName="appartmentName">
+                </div>
+                <button class="btn btn-primary" type="button" (click)='addFlat()'>Add Flat</button>
+                <div formArrayName='flats' *ngFor='let control of addAppartmentForm.get("flats").controls; index as i'>
+                    <div [formGroupName]='i'>
+                        <div class="form-group">
+                            <label for="{{'flatType'+(i+1)}}">Flat Type {{i+1}}</label>
+                            <input type="text" name="flatType" id="{{'flatType'+i+1}}" formControlName="flatType"
+                                class="formControl"><br>
+                            <label for="{{'cost'+(i+1)}}">cost {{i+1}}</label>
+                            <input type="number" name="cost" id="{{'cost'+i+1}}" formControlName="cost"
+                                class="formControl">
+                            <button type="button" (click)='removeFlat(i)'>&times;</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-success float-right">Add</button>
+            </div>
+        </div>
+    </form>
+</div>

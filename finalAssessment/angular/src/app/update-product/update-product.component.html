@@ -1,0 +1,68 @@
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>
+
+<div class="col-md-4 offset-md-4 mt-5">
+    <form #form="ngForm" (ngSubmit)="submitData(form)">
+        <div class="card">
+            <div class="card-header bg-white text-black text-center">
+                <h3>Update Product</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <input class="form-control" type="number" name="id" id="id" placeholder="Enter Product Id"
+                        #id="ngModel" ngModel required pattern="/^-?(0|[1-9]\d*)?$/">
+                </div>
+                <div *ngIf="id.touched && id.invalid">
+                    <p class="text-danger" *ngIf="id.errors.required" style="font-size: smaller">*This field is required</p>
+                    <p class="text-danger" *ngIf="id.errors.pattern" style="font-size: smaller">*Only numbers</p>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Enter Product Name"
+                        #name="ngModel" ngModel required pattern="^[A-Z]+[a-zA-Z]*$">
+                </div>
+                <div *ngIf="name.touched && name.invalid">
+                    <p class="text-danger" *ngIf="name.errors.required" style="font-size: smaller">*This field is required</p>
+                    <p class="text-danger" *ngIf="name.errors.pattern" style="font-size: smaller">*Only characters & first letter is capital</p>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="category" id="category" placeholder="Enter Category"
+                        #category="ngModel" ngModel required pattern="^[A-Z]+[a-zA-Z]*$">
+                </div>
+                <div *ngIf="category.touched && category.invalid">
+                    <p class="text-danger" *ngIf="category.errors.required" style="font-size: smaller">*This field is required</p>
+                    <p class="text-danger" *ngIf="category.errors.pattern" style="font-size: smaller">*Only characters & first letter is capital</p>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="company" id="company"
+                        placeholder="Enter company name" #company="ngModel" ngModel required pattern="^[A-Z]+[a-zA-Z]*$">
+                </div>
+                <div *ngIf="company.touched && company.invalid">
+                    <p class="text-danger" *ngIf="company.errors.required" style="font-size: smaller">*This field is required</p>
+                    <p class="text-danger" *ngIf="company.errors.pattern" style="font-size: smaller">*Only characters & first letter is capital</p>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="quantity" id="quantity" placeholder="Enter Quantity"
+                        #quantity="ngModel" ngModel required >
+                </div>
+                <div *ngIf="quantity.touched && quantity.invalid">
+                    <p class="text-danger" *ngIf="quantity.errors.required" style="font-size: smaller">*This field is required</p>
+                    <!-- <p class="text-danger" *ngIf='quantity.errors.pattern' style="font-size: smaller">*Only numbers are allowed</p> -->
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="price" id="price" placeholder="Enter price"
+                        #price="ngModel" ngModel required >
+                        
+                </div>
+                <div *ngIf="price.touched && price.invalid">
+                    <p class="text-danger" *ngIf="price.errors.required" style="font-size: smaller">*This field is required</p>
+                    <!-- <p class="text-danger" *ngIf="price.errors.pattern" style="font-size: smaller">*Only numbers</p> -->
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-outline-dark float-right" [disabled]="form.invalid">Update</button>
+            </div>
+        </div>
+    </form>
+</div>
+

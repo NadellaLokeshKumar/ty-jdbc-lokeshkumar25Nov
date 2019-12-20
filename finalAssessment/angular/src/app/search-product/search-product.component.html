@@ -1,0 +1,38 @@
+<div *ngIf="product">
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Company</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{product.name}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.company}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<div class="col-md-4 offset-4 mt-15">
+<form #form="ngForm" (ngSubmit)="submitData(form)">
+    <div class="card">
+    <div class="form-group">
+        <input class="form-control" type="number" name="id" id="id" placeholder="Enter Product Id" #id="ngModel" ngModel
+            required >
+    </div>
+    <div *ngIf="id.touched && id.invalid">
+        <p class="text-danger" *ngIf="id.errors.required" style="font-size: smaller">*This field is required</p>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-outline-dark float-right" [disabled]="form.invalid">Search</button>
+    </div>
+</div>
+</form>
+</div>
